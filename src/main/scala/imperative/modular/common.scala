@@ -12,7 +12,7 @@ trait OutputToStdOut[Result] extends Output[Result] {
 
 /** Defines a dependency (plug-in contract) on a run method that processes an input stream. */
 trait Task[Input] {
-  def run(input: Iterator[Input], args: Array[String]): Unit
+  def run(input: Iterator[Input], args: Array[String] = Array.empty): Unit
 }
 
 /**

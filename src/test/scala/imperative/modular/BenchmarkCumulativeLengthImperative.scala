@@ -6,7 +6,8 @@ object BenchmarkCumulativeLengthImperative extends Bench.LocalTime {
 
   val sut = new AccumulateLength {
     var length = 0
-    override def doOutput(result: (String, Int)): Unit = { length += 1 }
+    override def doOutput(result: (String, Int)): Unit =
+      length += 1
   }
 
   val sizes = Gen.exponential("size")(1000, 10000000, 10)
