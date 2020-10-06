@@ -13,5 +13,5 @@ package functional.simple
  */
 
 object RecurringRainfallFunctional extends App {
-  // TODO
+  // TODO laufer@cs.luc.edu
 }
