@@ -6,12 +6,12 @@ package imperative.modular
  */
 trait CountLines extends Task[String] with Output[(Int, String)] {
 
-  override def run(input: Iterator[String], args: Array[String]) = {
-    if (args.length > 0) {
-      System.err.println("args: " + args.toSeq)
+  override def run(input: Iterator[String], args: Array[String] = Array.empty) = {
+    if args.length > 0 then {
+      System.err.nn.println("args: " + args.toSeq)
     }
     var count = 0
-    for (line <- input) {
+    for line <- input do {
       count += 1
       doOutput((count, line))
     }

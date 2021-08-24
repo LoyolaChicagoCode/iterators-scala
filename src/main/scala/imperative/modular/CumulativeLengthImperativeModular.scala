@@ -7,13 +7,13 @@ package imperative.modular
  */
 trait AccumulateLength extends Task[String] with Output[(String, Int)] {
 
-  override def run(input: Iterator[String], args: Array[String]) = {
-    if (args.length > 0) {
-      System.err.println("args: " + args.toSeq)
+  override def run(input: Iterator[String], args: Array[String] = Array.empty) = {
+    if args.length > 0 then {
+      System.err.nn.println("args: " + args.toSeq)
     }
     var line = "dummy"
     var length = 0
-    for (next <- input) {
+    for next <- input do {
       line = next
       length = length + next.length
       doOutput((line, length))

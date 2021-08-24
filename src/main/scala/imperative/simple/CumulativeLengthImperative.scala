@@ -7,7 +7,7 @@ object CumulativeLengthImperative extends App {
   var length = 0
 
   val lines = scala.io.Source.stdin.getLines()
-  while (lines.hasNext) {
+  while lines.hasNext do {
     val next = lines.next()
     line = next
     length = length + next.length

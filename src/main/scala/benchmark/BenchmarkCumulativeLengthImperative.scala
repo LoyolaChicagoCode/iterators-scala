@@ -1,8 +1,9 @@
-package imperative.modular
+package benchmark
 
+import imperative.modular.AccumulateLength
 import org.openjdk.jmh.annotations.Benchmark
 
-class BenchmarkCumulativeLengthImperative {
+class BenchmarkCumulativeLengthImperative extends Inputs {
 
   def sut = new AccumulateLength {
     var length = 0
@@ -11,5 +12,14 @@ class BenchmarkCumulativeLengthImperative {
   }
 
   @Benchmark
-  def size1000 = sut.run(Iterator.fill(1000)("hello"))
+  def run1_000() = sut.run(input1_000)
+
+  @Benchmark
+  def run10_000() = sut.run(input10_000)
+
+  @Benchmark
+  def run100_000() = sut.run(input100_000)
+
+  @Benchmark
+  def run1_000_000() = sut.run(input1_000_000)
 }

@@ -1,26 +1,19 @@
-package functional.modular
+package benchmark
 
+import functional.modular.CumLen
 import org.openjdk.jmh.annotations.Benchmark
 
-class BenchmarkCumulativeLengthFunctional {
-
-  def input1_000 = Iterator.fill(1000)("hello")
-
-  def input10_000 = Iterator.fill(1000)("hello")
-
-  def input100_000 = Iterator.fill(1000)("hello")
-
-  def input1_000_000 = Iterator.fill(1000)("hello")
+class BenchmarkCumulativeLengthFunctional extends Inputs {
 
   @Benchmark
-  def size1_000 = CumLen.run(input1_000)
+  def run1_000() = CumLen.run(input1_000).foreach { _ => }
 
   @Benchmark
-  def size10_000 = CumLen.run(input10_000)
+  def run10_000() = CumLen.run(input10_000).foreach { _ => }
 
   @Benchmark
-  def size100_000 = CumLen.run(input100_000)
+  def run100_000() = CumLen.run(input100_000).foreach { _ => }
 
   @Benchmark
-  def size1_000_000 = CumLen.run(input1_000_000)
+  def run1_000_000() = CumLen.run(input1_000_000).foreach { _ => }
 }

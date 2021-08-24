@@ -5,7 +5,7 @@ import org.scalatest.wordspec.AnyWordSpec
 class TestLineCountFunctional extends AnyWordSpec {
 
   /** Refers to the existing immutable SUT instance. */
-  val sut = LineCountFunctionalModular
+  val sut = LineCount
 
   "The functional LineCounter" when {
     "given an empty iterator" should {
