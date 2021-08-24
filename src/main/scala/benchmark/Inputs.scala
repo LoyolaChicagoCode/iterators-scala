@@ -1,0 +1,5 @@
+package benchmark
+
+object common {
+
+}

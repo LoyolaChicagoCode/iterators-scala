@@ -2,19 +2,19 @@ name := "iterators-scala"
 
 version := "0.3"
 
-scalaVersion := "2.13.6"
+scalaVersion := "3.0.1"
 
-scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked")
+scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked", "-Yexplicit-nulls")
 
 libraryDependencies ++= Seq(
-  "org.scalatest"     %% "scalatest"  % "3.2.9"  % Test,
-  "com.storm-enroute" %% "scalameter" % "0.22-SNAPSHOT" % Test
+  "org.scalatest"     %% "scalatest"  % "3.2.9"  % Test
 )
-
-testFrameworks += new TestFramework("org.scalameter.ScalaMeterFramework")
 
 logBuffered := false
 
-parallelExecution in Test := false
+Test / parallelExecution := false
 
 enablePlugins(JavaAppPackaging)
+enablePlugins(JmhPlugin)
+
+scalacOptions ++= Seq("-rewrite", "-new-syntax")
