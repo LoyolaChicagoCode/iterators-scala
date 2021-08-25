@@ -4,6 +4,9 @@ import org.scalatest.wordspec.AnyWordSpec
 
 class TestCumulativeLengthFunctional extends AnyWordSpec {
 
+  /** Enable typesafe equality for these tuples. */
+  given CanEqual[(String, Int), (String, Int)] = CanEqual.derived
+
   /** Refers to the existing immutable SUT instance. */
   val sut = CumulativeLengthFunctionalModular
 
@@ -25,7 +28,7 @@ class TestCumulativeLengthFunctional extends AnyWordSpec {
         // exercise SUT
         val actual: Iterator[(String, Int)] = sut.run(data.iterator)
         // check resulting iterator
-        assert(actual.toSeq === expected)
+        assert(actual.toSeq == expected)
       }
     }
 

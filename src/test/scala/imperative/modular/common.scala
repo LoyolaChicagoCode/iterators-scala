@@ -15,10 +15,12 @@ trait OutputToBuffer[Result] extends Output[Result] {
 /** A mini-framework for trace-based testing of interactive behavior. */
 trait Tracing[Input, Result] extends Task[Input] with Output[Result] {
 
-  sealed trait TraceEvent
-  case class InputEvent(value: Input) extends TraceEvent
-  case class OutputEvent(value: Result) extends TraceEvent
+  enum TraceEvent derives CanEqual:
+    case InputEvent(value: Input)
+    case OutputEvent(value: Result)
 
+  import TraceEvent._
+  
   val trace = Buffer.empty[TraceEvent]
 
   /** Instruments the input such that accessing the item appends the corresponding event to the trace. */
