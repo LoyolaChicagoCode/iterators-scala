@@ -24,7 +24,7 @@ These really are the only required prerequisites.
 
 # Running the tests
 
-This will run the unit tests along with the performance benchmarks.
+This will run the unit tests.
 
     $ sbt test
 
@@ -77,3 +77,8 @@ Then run the filters outside of sbt like this:
     (10,hello)
     (15,hello)
     (20,hello)
+
+# Running the benchmarks
+
+The benchmarks enable us to compare the performance of the imperative and functional implementations
+of the cumulative line length example.
