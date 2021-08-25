@@ -81,4 +81,10 @@ Then run the filters outside of sbt like this:
 # Running the benchmarks
 
 The benchmarks enable us to compare the performance of the imperative and functional implementations
-of the cumulative line length example.
+of the cumulative line length example. For example, you can run them like this:
+
+    sbt "Jmh / run -bm avgt -tu us -w 1 -wi 3 -r 1 -f 1 -t 1"
+
+To see what these options mean, run
+
+    sbt "Jmh / run -h"
