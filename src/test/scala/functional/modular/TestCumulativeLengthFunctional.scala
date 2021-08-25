@@ -5,7 +5,7 @@ import org.scalatest.wordspec.AnyWordSpec
 class TestCumulativeLengthFunctional extends AnyWordSpec {
 
   /** Refers to the existing immutable SUT instance. */
-  val sut = CumLen
+  val sut = CumulativeLengthFunctionalModular
 
   "The functional CumulativeLength calculator" when {
     "given an empty iterator" should {

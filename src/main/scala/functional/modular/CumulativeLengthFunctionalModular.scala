@@ -1,6 +1,7 @@
 package functional.modular
 
-object CumLen {
+/** Reads lines and prints cumulative length of all lines so far along with most recent line itself. */
+object CumulativeLengthFunctionalModular {
   type Result = (String, Int)
 
   def accumulateCount(acc: Result, nextItem: String): Result =
@@ -12,7 +13,6 @@ object CumLen {
     }
     lines.scanLeft("dummy", 0)(accumulateCount).drop(1)
   }
-}
 
-/** Reads lines and prints cumulative length of all lines so far along with most recent line itself. */
-object CumulativeLengthFunctionalModular extends Main[CumLen.Result](CumLen.run)
+  def main(args: Array[String]): Unit = runWithStdIO(run, args)
+}
