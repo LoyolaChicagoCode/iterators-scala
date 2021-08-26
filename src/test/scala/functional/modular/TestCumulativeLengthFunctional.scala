@@ -1,11 +1,9 @@
 package functional.modular
 
 import org.scalatest.wordspec.AnyWordSpec
+import common.canequal.given
 
 class TestCumulativeLengthFunctional extends AnyWordSpec {
-
-  /** Enable typesafe equality for these tuples. */
-  given CanEqual[(String, Int), (String, Int)] = CanEqual.derived
 
   /** Refers to the existing immutable SUT instance. */
   val sut = CumulativeLengthFunctionalModular

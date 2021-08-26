@@ -1,7 +1,8 @@
 package imperative.simple
 
+import common.canequal.given
+
 object TemperatureConversion extends App {
-  given CanEqual[Any, Null] = CanEqual.derived // enables line != null check
   var line: String | Null = scala.io.StdIn.readLine()
   while line != null do {
     val raw = line.nn.toInt

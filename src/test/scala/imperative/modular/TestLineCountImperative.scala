@@ -1,11 +1,11 @@
 package imperative.modular
 
 import org.scalatest.wordspec.AnyWordSpec
+import common.canequal.given
+
+given[T, U](using teq: CanEqual[T, T], ueq: CanEqual[U, U]): CanEqual[(T, U), (T, U)] = CanEqual.derived
 
 class TestLineCountImperative extends AnyWordSpec {
-
-  /** Enable typesafe equality for these tuples. */
-  given CanEqual[(Int, String), (Int, String)] = CanEqual.derived
 
   /** Creates a (mutable!) SUT instance. */
   def createSUT() = new CountLines with OutputToBuffer[(Int, String)]

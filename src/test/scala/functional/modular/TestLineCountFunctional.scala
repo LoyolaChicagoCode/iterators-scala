@@ -1,11 +1,9 @@
 package functional.modular
 
 import org.scalatest.wordspec.AnyWordSpec
+import common.canequal.given
 
 class TestLineCountFunctional extends AnyWordSpec {
-
-  /** Enable typesafe equality for these tuples. */
-  given CanEqual[(Int, String), (Int, String)] = CanEqual.derived
 
   /** Refers to the existing immutable SUT instance. */
   val sut = LineCountFunctionalModular
