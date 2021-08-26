@@ -19,7 +19,7 @@ trait Tracing[Input, Result] extends Task[Input] with Output[Result] {
     case InputEvent(value: Input)
     case OutputEvent(value: Result)
 
-  import TraceEvent._
+  import TraceEvent.*
   
   val trace = Buffer.empty[TraceEvent]
 

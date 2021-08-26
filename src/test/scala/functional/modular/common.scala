@@ -9,7 +9,7 @@ object Tracing {
     case InputEvent[Input, Result](value: Input) extends TraceEvent[Input, Result]
     case OutputEvent[Input, Result](value: Result) extends TraceEvent[Input, Result]
 
-  import TraceEvent._
+  import TraceEvent.*
   
   /**
    * Invokes the original run method on the instrumented input,
