@@ -12,6 +12,7 @@ package functional.simple
  * https://web.cs.wpi.edu/~kfisler/Pubs/icer14-rainfall/icer14.pdf
  */
 
-object RecurringRainfallFunctional extends App {
+object RecurringRainfallFunctional {
   // TODO @klaeufer
+  def main(args: Array[String]): Unit = ???
 }
