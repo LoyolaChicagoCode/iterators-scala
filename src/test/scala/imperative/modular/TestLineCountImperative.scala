@@ -3,8 +3,6 @@ package imperative.modular
 import org.scalatest.wordspec.AnyWordSpec
 import common.canequal.given
 
-given[T, U](using teq: CanEqual[T, T], ueq: CanEqual[U, U]): CanEqual[(T, U), (T, U)] = CanEqual.derived
-
 class TestLineCountImperative extends AnyWordSpec {
 
   /** Creates a (mutable!) SUT instance. */
