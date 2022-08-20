@@ -1,7 +1,5 @@
 package imperative.simple
 
-import common.canequal.given
-
 object TemperatureConversion {
   def main(args: Array[String]): Unit = {
     var line: String | Null = scala.io.StdIn.readLine()

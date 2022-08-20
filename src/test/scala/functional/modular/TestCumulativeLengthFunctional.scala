@@ -1,7 +1,6 @@
 package functional.modular
 
 import org.scalatest.wordspec.AnyWordSpec
-import common.canequal.given
 
 class TestCumulativeLengthFunctional extends AnyWordSpec {
 

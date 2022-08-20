@@ -1,7 +1,6 @@
 package imperative.modular
 
 import org.scalatest.wordspec.AnyWordSpec
-import common.canequal.given
 
 class TestLineCountImperative extends AnyWordSpec {
 

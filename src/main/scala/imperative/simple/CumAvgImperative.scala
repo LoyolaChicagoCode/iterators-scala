@@ -1,7 +1,5 @@
 package imperative.simple
 
-import common.canequal.given
-
 object CumAvgImperative {
   def main(args: Array[String]): Unit = {
     var count = 0
