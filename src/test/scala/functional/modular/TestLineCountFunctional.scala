@@ -2,7 +2,7 @@ package functional.modular
 
 import org.scalatest.wordspec.AnyWordSpec
 
-class TestLineCountFunctional extends AnyWordSpec {
+class TestLineCountFunctional extends AnyWordSpec:
 
   /** Refers to the existing immutable SUT instance. */
   val sut = LineCountFunctionalModular
@@ -44,4 +44,5 @@ class TestLineCountFunctional extends AnyWordSpec {
       }
     }
   }
-}
+
+end TestLineCountFunctional

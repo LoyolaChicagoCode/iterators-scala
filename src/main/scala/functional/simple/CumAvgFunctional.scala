@@ -1,7 +1,8 @@
 package functional.simple
 
-object CumAvgFunctional {
-  def main(args: Array[String]): Unit = {
+object CumAvgFunctional:
+
+  def main(args: Array[String]): Unit =
     val lines = scala.io.Source.stdin.getLines()
     // convert each input line to a number
     val values = lines.map(_.toDouble)
@@ -14,8 +15,10 @@ object CumAvgFunctional {
       case (count, sum) => (count, sum / count)
     }
     // print the results except for the first one
-    countsWithAvgs.drop(1).foreach {
-      case (count, avg) => println(s"$count: $avg")
+    countsWithAvgs.drop(1).takeWhile { case (count, avg) =>
+      println(s"$count: $avg")
+      // terminate on I/O error such as SIGPIPE
+      !scala.sys.process.stdout.checkError()
     }
-  }
-}
+
+end CumAvgFunctional

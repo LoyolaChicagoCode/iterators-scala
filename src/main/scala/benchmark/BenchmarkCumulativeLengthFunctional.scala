@@ -3,7 +3,7 @@ package benchmark
 import functional.modular.CumulativeLengthFunctionalModular
 import org.openjdk.jmh.annotations.Benchmark
 
-class BenchmarkCumulativeLengthFunctional extends Inputs {
+class BenchmarkCumulativeLengthFunctional extends Inputs:
 
   def sut = CumulativeLengthFunctionalModular
 
@@ -18,4 +18,5 @@ class BenchmarkCumulativeLengthFunctional extends Inputs {
 
   @Benchmark
   def run1_000_000() = sut.run(input1_000_000).foreach { _ => }
-}
+
+end BenchmarkCumulativeLengthFunctional

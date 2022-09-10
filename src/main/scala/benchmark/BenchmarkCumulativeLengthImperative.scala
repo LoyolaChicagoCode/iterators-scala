@@ -3,13 +3,12 @@ package benchmark
 import imperative.modular.AccumulateLength
 import org.openjdk.jmh.annotations.Benchmark
 
-class BenchmarkCumulativeLengthImperative extends Inputs {
+class BenchmarkCumulativeLengthImperative extends Inputs:
 
-  def sut = new AccumulateLength {
+  def sut = new AccumulateLength:
     var length = 0
     override def doOutput(result: (String, Int)): Unit =
       length += 1
-  }
 
   @Benchmark
   def run1_000() = sut.run(input1_000)
@@ -22,4 +21,5 @@ class BenchmarkCumulativeLengthImperative extends Inputs {
 
   @Benchmark
   def run1_000_000() = sut.run(input1_000_000)
-}
+
+end BenchmarkCumulativeLengthImperative

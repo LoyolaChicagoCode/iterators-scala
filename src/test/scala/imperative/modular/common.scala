@@ -3,17 +3,18 @@ package imperative.modular
 import scala.collection.mutable.Buffer
 
 /** Provides an output observer that accumulates the results in a buffer one can inspect later. */
-trait OutputToBuffer[Result] extends Output[Result] {
+trait OutputToBuffer[Result] extends Output[Result]:
 
   private val buffer = Buffer.empty[Result]
 
   def getResults: Seq[Result] = buffer.toSeq
 
   override def doOutput(result: Result) = { buffer.append(result) }
-}
+
+end OutputToBuffer
 
 /** A mini-framework for trace-based testing of interactive behavior. */
-trait Tracing[Input, Result] extends Task[Input] with Output[Result] {
+trait Tracing[Input, Result] extends Task[Input] with Output[Result]:
 
   enum TraceEvent derives CanEqual:
     case InputEvent(value: Input)
@@ -36,4 +37,5 @@ trait Tracing[Input, Result] extends Task[Input] with Output[Result] {
    */
   abstract override def run(input: Iterator[Input], args: Array[String] = Array.empty) =
     super.run(traced(input), args)
-}
+
+end Tracing
