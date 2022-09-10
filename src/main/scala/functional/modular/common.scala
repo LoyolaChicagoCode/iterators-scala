@@ -12,6 +12,11 @@ package object modular:
   def runWithStdIO[Result](run: Task[String, Result], args: Array[String]): Unit =
     val lines = scala.io.Source.stdin.getLines()
     val result = run(lines, args)
-    result.foreach { r => println(r) }
+    result.takeWhile { _ =>
+      // terminate on I/O error such as SIGPIPE
+      !scala.sys.process.stdout.checkError()
+    } foreach { r =>
+      println(r)
+    }
 
 end modular

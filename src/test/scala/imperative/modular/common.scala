@@ -9,7 +9,7 @@ trait OutputToBuffer[Result] extends Output[Result]:
 
   def getResults: Seq[Result] = buffer.toSeq
 
-  override def doOutput(result: Result) = { buffer.append(result) }
+  override def doOutput(result: Result) = buffer.append(result)
 
 end OutputToBuffer
 

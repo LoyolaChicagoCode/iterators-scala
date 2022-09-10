@@ -13,8 +13,6 @@ package functional.simple
  */
 
 object RecurringRainfallFunctional:
-
   // TODO @klaeufer
   def main(args: Array[String]): Unit = ???
-
 end RecurringRainfallFunctional

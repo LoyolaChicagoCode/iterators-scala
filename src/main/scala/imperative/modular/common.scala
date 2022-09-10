@@ -7,7 +7,12 @@ end Output
 
 /** Provides a reusable output observer tied to println/stdout. */
 trait OutputToStdOut[Result] extends Output[Result]:
-  override def doOutput(result: Result) = println(result)
+  override def doOutput(result: Result): Unit =
+    println(result)
+    // terminate on I/O error such as SIGPIPE
+    if scala.sys.process.stdout.checkError() then
+      sys.exit(1)
+
 end OutputToStdOut
 
 /** Defines a dependency (plug-in contract) on a run method that processes an input stream. */

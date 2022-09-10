@@ -5,7 +5,6 @@ package imperative.modular
  * Depends on a suitable Output provider.
  */
 trait CountLines extends Task[String] with Output[(Int, String)]:
-
   override def run(input: Iterator[String], args: Array[String] = Array.empty) =
     if args.length > 0 then
       System.err.nn.println("args: " + args.toSeq)

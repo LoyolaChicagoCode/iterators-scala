@@ -7,8 +7,7 @@ class BenchmarkCumulativeLengthImperative extends Inputs:
 
   def sut = new AccumulateLength:
     var length = 0
-    override def doOutput(result: (String, Int)): Unit =
-      length += 1
+    override def doOutput(result: (String, Int)) = length += 1
 
   @Benchmark
   def run1_000() = sut.run(input1_000)

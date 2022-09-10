@@ -9,10 +9,10 @@ object CumulativeLengthFunctional:
       (next, acc._2 + next.length)
     val results = lines.scanLeft("dummy", 0)(accumulateCount).drop(1)
 
-    results.takeWhile { r =>
-      println(r)
+    results takeWhile { _ =>
       // terminate on I/O error such as SIGPIPE
       !scala.sys.process.stdout.checkError()
+    } foreach { r =>
+      println(r)
     }
-
 end CumulativeLengthFunctional
