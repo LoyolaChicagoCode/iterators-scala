@@ -4,10 +4,12 @@ version := "0.3"
 
 scalaVersion := "3.2.0"
 
-scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked", "-Yexplicit-nulls", "-language:strictEquality")
+scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked", "-Yexplicit-nulls", "-Ysafe-init", "-language:strictEquality")
+
+coverageEnabled := true
 
 libraryDependencies ++= Seq(
-  "org.scalatest"     %% "scalatest"  % "3.2.13"  % Test
+  "org.scalatest"     %% "scalatest"  % "3.2.14"  % Test
 )
 
 logBuffered := false
@@ -16,5 +18,3 @@ Test / parallelExecution := false
 
 enablePlugins(JavaAppPackaging)
 enablePlugins(JmhPlugin)
-
-scalacOptions ++= Seq("-rewrite", "-new-syntax")
