@@ -1,18 +1,24 @@
 package imperative.modular
 
 /**
- * Provides a main method for reading lines and printing line count along with line itself.
- * Depends on a suitable Output provider.
+ * A Task implementation for reading items and reporting an item count along with each item.
+ * Still depends on a suitable Observer mixin.
+ * In addition, the result type depends on the still unspecified input type.
  */
-trait CountLines extends Task[String] with Output[(Int, String)]:
-  override def run(input: Iterator[String], args: Array[String] = Array.empty) =
-    if args.length > 0 then
-      System.err.nn.println("args: " + args.toSeq)
+trait CountItems extends Task:
+  self: Observer =>
+  override type Result = (Int, Input)
+  def run(args: Seq[String])(input: Iterator[Input]): Unit =
+    if args.nonEmpty then
+      sys.process.stderr.println("args: " + args)
     var count = 0
-    for line <- input do
+    for item <- input do
       count += 1
-      doOutput((count, line))
-end CountLines
+      update((count, item))
+end CountItems
 
-/** A concrete main application object. */
-object LineCountImperativeModular extends Main[(Int, String)] with CountLines
+/**
+ * An concrete, executable application combining Task and Observer implementations.
+ * Main specifies the input type as `String` and thereby sets the result type to `(Int, String)`.
+ */
+object LineCountImperativeModular extends CountItems, Main
