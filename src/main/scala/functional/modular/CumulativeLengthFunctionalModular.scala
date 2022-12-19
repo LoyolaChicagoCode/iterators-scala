@@ -10,7 +10,7 @@ object CumulativeLengthFunctionalModular:
 
   def run(lines: Iterator[String], args: Array[String] = Array.empty): Iterator[Result] =
     if args.length > 0 then
-      System.err.nn.println("args: " + args.toSeq)
+      sys.process.stderr.println("args: " + args.toSeq)
     lines.scanLeft("dummy", 0)(accumulateCount).drop(1)
 
   def main(args: Array[String]): Unit = runWithStdIO(run, args)

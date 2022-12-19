@@ -8,10 +8,9 @@ object LineCountFunctional:
     val counts = Iterator.from(1)
     val results = counts.zip(lines)
 
-    results takeWhile { _ =>
+    results takeWhile { r =>
+      println(r)
       // terminate on I/O error such as SIGPIPE
       !scala.sys.process.stdout.checkError()
-    } foreach {
-      println(_)
     }
 end LineCountFunctional
