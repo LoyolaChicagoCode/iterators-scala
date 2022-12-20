@@ -6,8 +6,8 @@ import scala.collection.mutable.Buffer
 object Tracing:
 
   enum TraceEvent[Input, Result] derives CanEqual:
-    case InputEvent[Input, Result](value: Input) extends TraceEvent[Input, Result]
-    case OutputEvent[Input, Result](value: Result) extends TraceEvent[Input, Result]
+    case InputEvent(value: Input)
+    case OutputEvent(value: Result)
 
   import TraceEvent.*
   
