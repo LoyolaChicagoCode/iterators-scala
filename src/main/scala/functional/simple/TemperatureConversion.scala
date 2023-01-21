@@ -7,9 +7,8 @@ object TemperatureConversion:
     val values = lines.map(_.toDouble)
     val results = values.map(r => math.round(r / 20))
 
-    results takeWhile { r =>
-      println(r)
+    results
       // terminate on I/O error such as SIGPIPE
-      !scala.sys.process.stdout.checkError()
-    }
+      .takeWhile { _ => !scala.sys.process.stdout.checkError() }
+      .foreach { r => println(r) }
 end TemperatureConversion

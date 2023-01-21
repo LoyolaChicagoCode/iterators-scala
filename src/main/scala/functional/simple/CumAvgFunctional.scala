@@ -12,13 +12,13 @@ object CumAvgFunctional:
     }
     // convert the count and sum pairs to count and cumulative average pairs
     val countsWithAvgs = countsWithSums.map {
-      case (count, sum) => (count, sum / count)
+      (count, sum) => (count, sum / count)
     }
 
     // print the results except for the first one
-    countsWithAvgs.drop(1) takeWhile { case (count, avg) =>
-      println(s"$count: $avg")
+    countsWithAvgs
+      .drop(1)
       // terminate on I/O error such as SIGPIPE
-      !scala.sys.process.stdout.checkError()
-    }
+      .takeWhile { _ => !scala.sys.process.stdout.checkError() }
+      .foreach { (count, avg) => println(s"$count: $avg") }
 end CumAvgFunctional

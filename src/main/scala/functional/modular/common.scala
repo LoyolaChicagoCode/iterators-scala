@@ -11,8 +11,7 @@ type Task[-Input, +Result] = (Iterator[Input], Array[String]) => Iterator[Result
 def runWithStdIO[Result](run: Task[String, Result], args: Array[String]): Unit =
   val lines = scala.io.Source.stdin.getLines()
   val result = run(lines, args)
-  result.takeWhile { r =>
-    println(r)
+  result
     // terminate on I/O error such as SIGPIPE
-    !scala.sys.process.stdout.checkError()
-  }
+    .takeWhile { _ => !scala.sys.process.stdout.checkError() }
+    .foreach { r => println(r) }
