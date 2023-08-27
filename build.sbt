@@ -9,7 +9,7 @@ scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked", "-Yexplicit-null
 coverageEnabled := true
 
 libraryDependencies ++= Seq(
-  "org.scalatest"     %% "scalatest"  % "3.2.15"  % Test
+  "org.scalatest"     %% "scalatest"  % "3.2.16"  % Test
 )
 
 logBuffered := false
