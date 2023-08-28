@@ -4,13 +4,9 @@ version := "0.3"
 
 scalaVersion := "3.3.0"
 
-scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked", "-Yexplicit-nulls", "-Ysafe-init", "-language:strictEquality")
+scalacOptions += "@.scalacOptions.txt"
 
-coverageEnabled := true
-
-libraryDependencies ++= Seq(
-  "org.scalatest"     %% "scalatest"  % "3.2.16"  % Test
-)
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.16" % Test
 
 logBuffered := false
 
