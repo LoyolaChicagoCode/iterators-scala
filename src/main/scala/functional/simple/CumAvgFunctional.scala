@@ -11,9 +11,8 @@ object CumAvgFunctional:
       case ((count, sum), value) => (count + 1, sum + value)
     }
     // convert the count and sum pairs to count and cumulative average pairs
-    val countsWithAvgs = countsWithSums.map {
+    val countsWithAvgs = countsWithSums.map:
       (count, sum) => (count, sum / count)
-    }
 
     // print the results except for the first one
     countsWithAvgs
