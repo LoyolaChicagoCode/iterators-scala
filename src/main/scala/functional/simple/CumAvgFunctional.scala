@@ -7,9 +7,8 @@ object CumAvgFunctional:
     // convert each input line to a number
     val values = lines.map(_.toDouble)
     // for each number, produce a count and a cumulative sum
-    val countsWithSums = values.scanLeft((0, 0.0)) {
+    val countsWithSums = values.scanLeft((0, 0.0)):
       case ((count, sum), value) => (count + 1, sum + value)
-    }
     // convert the count and sum pairs to count and cumulative average pairs
     val countsWithAvgs = countsWithSums.map:
       (count, sum) => (count, sum / count)
