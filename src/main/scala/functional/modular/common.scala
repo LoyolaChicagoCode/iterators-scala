@@ -13,5 +13,7 @@ def runWithStdIO[Result](run: Task[String, Result], args: Array[String]): Unit =
   val result = run(lines, args)
   result
     // terminate on I/O error such as SIGPIPE
-    .takeWhile { _ => !scala.sys.process.stdout.checkError() }
-    .foreach { r => println(r) }
+    .takeWhile: _ =>
+      !scala.sys.process.stdout.checkError()
+    .foreach: r =>
+      println(r)

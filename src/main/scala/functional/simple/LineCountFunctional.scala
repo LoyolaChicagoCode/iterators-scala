@@ -10,6 +10,8 @@ object LineCountFunctional:
 
     results
       // terminate on I/O error such as SIGPIPE
-      .takeWhile { r => !scala.sys.process.stdout.checkError() }
-      .foreach { r => println(r) }
+      .takeWhile: r => 
+        !scala.sys.process.stdout.checkError()
+      .foreach: r => 
+        println(r)
 end LineCountFunctional

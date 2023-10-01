@@ -11,6 +11,8 @@ object CumulativeLengthFunctional:
 
     results
       // terminate on I/O error such as SIGPIPE
-      .takeWhile { _ => !scala.sys.process.stdout.checkError() }
-      .foreach { r => println(r) }
+      .takeWhile: _ => 
+        !scala.sys.process.stdout.checkError()
+      .foreach: r => 
+        println(r)
 end CumulativeLengthFunctional

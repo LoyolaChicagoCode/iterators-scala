@@ -17,6 +17,8 @@ object CumAvgFunctional:
     countsWithAvgs
       .drop(1)
       // terminate on I/O error such as SIGPIPE
-      .takeWhile { _ => !scala.sys.process.stdout.checkError() }
-      .foreach { (count, avg) => println(s"$count: $avg") }
+      .takeWhile: _ =>
+        !scala.sys.process.stdout.checkError()
+      .foreach: (count, avg) =>
+        println(s"$count: $avg")
 end CumAvgFunctional
