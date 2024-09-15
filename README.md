@@ -36,8 +36,8 @@ During development:
 
 Or choose one of the following:
 
-    $ sbt 'runMain imperative.simple.LineCount'
-    $ sbt 'runMain imperative.modular.CumulativeLength'
+    $ sbt 'runMain imperative.simple.LineCountImperative'
+    $ sbt 'runMain imperative.modular.CumulativeLengthImperative'
     ...
 
 During production, first create the startup scripts:
