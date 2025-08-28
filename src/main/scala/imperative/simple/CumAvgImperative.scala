@@ -7,7 +7,7 @@ object CumAvgImperative:
     var line: String | Null = scala.io.StdIn.readLine()
     while line != null do
       count += 1
-      sum += line.nn.toDouble
+      sum += line.toDouble
       val avg = sum / count
       println(s"$count: $avg")
       // terminate on I/O error such as SIGPIPE
