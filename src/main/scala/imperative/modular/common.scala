@@ -8,12 +8,10 @@ trait Observer:
   def update(result: Result): Unit
 end Observer
 
-/** Prints its second argument to a given stream. */
-def outputToPrintStream[Result](out: PrintStream)(result: Result): Unit =
-  out.println(result)
-  // terminate on I/O error such as SIGPIPE
-  if out.checkError() then
-    sys.exit(1)
+/** An observer that prints its updates to stdout. */
+trait StdoutObserver extends Observer:
+  override def update(result: Result): Unit = println(result)
+end StdoutObserver
 
 /**
  * A dependency (plug-in contract) on a run method that processes an input stream.
@@ -28,10 +26,9 @@ end Task
  * An Observer mixin for running a Task within a suitable main method.
  * The Task receives input from stdin, and its Observer updates go to stdout.
  */
-trait Main extends Observer:
+trait Main extends StdoutObserver:
   self: Task =>
   override type Input = String
-  override def update(result: Result) = outputToPrintStream(scala.sys.process.stdout)(result)
   def main(args: Array[String]): Unit =
     val lines = scala.io.Source.stdin.getLines()
     run(args.toIndexedSeq)(lines)
