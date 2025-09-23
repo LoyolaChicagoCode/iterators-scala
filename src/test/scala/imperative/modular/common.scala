@@ -12,7 +12,7 @@ end OutputToBuffer
  * An Observer mixin for trace-based testing of interactive behaviors.
  * Also depends on a Task implementation whose run method it refines (decorates).
  */
-trait Tracing extends Task with Observer:
+trait Tracing extends TaskFactory with Observer:
 
   enum TraceEvent derives CanEqual:
     case InputEvent(value: Input)
@@ -33,7 +33,7 @@ trait Tracing extends Task with Observer:
    * `abstract override` lets us refine (decorate) a run method that is still abstract
    * as we are defining this trait but will be available later from a Task implementation such as `CountItems`.
    */
-  abstract override def run(args: Seq[String])(input: Iterator[Input]) =
-    super.run(args)(traced(input))
+  abstract override def create(args: Seq[String], input: Iterator[Input]) =
+    super.create(args, traced(input))
 
 end Tracing

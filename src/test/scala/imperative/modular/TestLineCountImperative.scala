@@ -5,16 +5,17 @@ import org.scalatest.wordspec.AnyWordSpec
 class TestLineCountImperative extends AnyWordSpec:
 
   /** Creates a (mutable!) SUT instance. */
-  def createSUT() = new CountItems with OutputToBuffer:
+  def factory() = new CountItems with OutputToBuffer:
     override type Input = String
 
   "An imperative LineCounter" when:
     "given an empty iterator" should:
       "produce an empty output" in:
         // create SUT instance for this test case
-        val sut = createSUT()
+        val sut = factory()
+        val task = sut.create(Seq.empty, Iterator.empty)
         // exercise SUT
-        sut.run(Seq.empty)(Iterator.empty)
+        task.run()
         // check effect on output observer
         assert(sut.buffer.isEmpty)
 
@@ -23,9 +24,10 @@ class TestLineCountImperative extends AnyWordSpec:
         // input data for this test case
         val data = Seq("hello", "world", "what", "up")
         // create SUT instance for this test case
-        val sut = createSUT()
+        val sut = factory()
+        val task = sut.create(Seq.empty, data.iterator)
         // exercise SUT
-        sut.run(Seq.empty)(data.iterator)
+        task.run()
         // check effect on output observer
         assert(sut.buffer == (1 to data.length).zip(data))
 
@@ -36,8 +38,9 @@ class TestLineCountImperative extends AnyWordSpec:
       // create SUT instance for this test case
       val sut = new CountItems with Tracing:
         override type Input = String
+      val task = sut.create(Seq.empty, input)
       // exercise SUT
-      sut.run(Seq.empty)(input)
+      task.run()
       // check correctness of resulting interactions
       import sut.TraceEvent.{InputEvent as i, OutputEvent as o}
       assert(sut.trace == Seq(

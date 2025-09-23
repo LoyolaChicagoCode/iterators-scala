@@ -1,7 +1,5 @@
 package imperative.modular
 
-import java.io.PrintStream
-
 /** A dependency (plug-in contract) on an update method (Observer). */
 trait Observer:
   type Result
@@ -14,22 +12,32 @@ trait StdoutObserver extends Observer:
 end StdoutObserver
 
 /**
+ * A simple component that provides a run method.
+ * Typically reports results to an Observer provided upon creation.
+ */
+trait Task:
+  def run(): Unit
+end Task
+
+/**
  * A dependency (plug-in contract) on a run method that processes an input stream.
  * Typically reports results to an Observer provided as a mixin.
  */
-trait Task:
+trait TaskFactory extends Observer:
   type Input
-  def run(args: Seq[String])(input: Iterator[Input]): Unit
-end Task
+  type Result
+  def create(args: Seq[String], input: Iterator[Input]): Task
+end TaskFactory
 
 /**
  * An Observer mixin for running a Task within a suitable main method.
  * The Task receives input from stdin, and its Observer updates go to stdout.
  */
 trait Main extends StdoutObserver:
-  self: Task =>
+  self: TaskFactory =>
   override type Input = String
   def main(args: Array[String]): Unit =
     val lines = scala.io.Source.stdin.getLines()
-    run(args.toIndexedSeq)(lines)
+    val task = create(args.toIndexedSeq, lines)
+    task.run()
 end Main

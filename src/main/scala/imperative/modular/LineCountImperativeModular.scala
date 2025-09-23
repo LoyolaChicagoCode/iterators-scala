@@ -5,10 +5,10 @@ package imperative.modular
  * Still depends on a suitable Observer mixin.
  * In addition, the result type depends on the still unspecified input type.
  */
-trait CountItems extends Task:
+trait CountItems extends TaskFactory:
   self: Observer =>
   override type Result = (Int, Input)
-  def run(args: Seq[String])(input: Iterator[Input]): Unit =
+  def create(args: Seq[String], input: Iterator[Input]): Task = () =>
     if args.nonEmpty then
       sys.process.stderr.println("args: " + args)
     var count = 0

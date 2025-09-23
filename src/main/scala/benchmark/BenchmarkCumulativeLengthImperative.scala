@@ -10,15 +10,15 @@ class BenchmarkCumulativeLengthImperative extends Inputs:
     override def update(result: Result) = length += 1
 
   @Benchmark
-  def run1_000() = sut.run(Seq.empty)(input1_000)
+  def run1_000() = sut.create(Seq.empty, input1_000).run()
 
   @Benchmark
-  def run10_000() = sut.run(Seq.empty)(input10_000)
+  def run10_000() = sut.create(Seq.empty, input10_000).run()
 
   @Benchmark
-  def run100_000() = sut.run(Seq.empty)(input100_000)
+  def run100_000() = sut.create(Seq.empty, input100_000).run()
 
   @Benchmark
-  def run1_000_000() = sut.run(Seq.empty)(input1_000_000)
+  def run1_000_000() = sut.create(Seq.empty, input1_000_000).run()
 
 end BenchmarkCumulativeLengthImperative
