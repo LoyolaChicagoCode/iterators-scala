@@ -23,7 +23,9 @@ trait Tracing extends TaskFactory with Observer:
   val trace = Buffer.empty[TraceEvent]
 
   /** Instruments the input such that accessing each item appends the corresponding event to the trace. */
-  protected def traced(input: Iterator[Input]) = input.map { s => trace.append(InputEvent(s)) ; s }
+  protected def traced(input: Iterator[Input]) = input.map: s =>
+     trace.append(InputEvent(s))
+     s 
 
   /** Adds an update to the trace. */
   override def update(result: Result) = trace.append(OutputEvent(result))

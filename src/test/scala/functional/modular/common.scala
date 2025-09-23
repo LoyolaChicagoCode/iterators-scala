@@ -20,8 +20,11 @@ object Tracing:
     (input: Iterator[Input], args: Array[String] = Array.empty)
   : Seq[TraceEvent[Input, Result]] =
     val trace = Buffer.empty[TraceEvent[Input, Result]]
-    val tracedInput = input.map { s => trace.append(InputEvent(s)); s }
-    run(tracedInput, args).foreach { s => trace.append(OutputEvent(s)) }
+    val tracedInput = input.map: s =>
+      trace.append(InputEvent(s))
+      s
+    run(tracedInput, args).foreach: s =>
+      trace.append(OutputEvent(s))
     trace.toSeq
 
 end Tracing
