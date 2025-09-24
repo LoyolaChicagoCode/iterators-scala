@@ -17,10 +17,10 @@ An understanding of
 
 # Prerequisites
 
-- Java Development Kit (JDK) through your package management system or from [Oracle](http://www.oracle.com/technetwork/java/javase/downloads)
+- Java Development Kit (JDK), version 17 or newer recommended
 - [sbt](http://www.scala-sbt.org/)
 
-These really are the only required prerequisites.
+These really are the only required prerequisites, and you can install them through [SDKMAN](https://sdkman.io/).
 
 # Running the tests
 
@@ -57,6 +57,12 @@ Then run the filters outside of sbt like this:
     (4,up)
 
     $ yes hello | head -n 4 | ./target/universal/stage/bin/line-count-imperative
+    (1,hello)
+    (2,hello)
+    (3,hello)
+    (4,hello)
+
+    $ yes hello | ./target/universal/stage/bin/line-count-imperative | head -n 4
     (1,hello)
     (2,hello)
     (3,hello)
